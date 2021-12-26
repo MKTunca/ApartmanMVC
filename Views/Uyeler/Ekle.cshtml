@@ -1,0 +1,41 @@
+﻿@model ApartmanProjeMVC.Models.Uyeler
+@{
+    ViewBag.Title = "Ekle";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>Ekle</h2>
+
+@using (Html.BeginForm("Ekle", "Uyeler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.TextBoxFor(m => m.Ad, new { @class = "form-control", placeholder = "Ad ve Soyad" })
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.Daire, new { @class = "form-control", placeholder = "Daire numarası" })
+            </td>
+            <td>
+                <div>
+                    <select name="oturan" class="btn btn-success" style="width:100%">
+                        <option value="Ev Sahibi">Ev Sahibi</option>
+                        <option value="Kiracı">Kiracı</option>
+                    </select>
+                </div>
+            </td>
+            <td>
+                @Html.TextBoxFor(m => m.gsm, new { @class = "form-control", placeholder = "Telefon numarası" })
+            </td>
+
+            <td>
+                @Html.TextBoxFor(m => m.tarih, new { @class = "form-control", placeholder = "Tarih", @type = "date" })
+            </td>
+            <td>
+                <button type="submit" class="btn btn-success">Ekle</button>
+                <hr />
+                <p>@ViewBag.uyari</p>
+            </td>
+        </tr>
+    </table>
+}

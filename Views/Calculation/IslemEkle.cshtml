@@ -1,0 +1,36 @@
+﻿@model ApartmanProjeMVC.Models.Islemler
+@{
+               
+
+                ViewBag.Title = "IslemEkle";
+                Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>IslemEkle</h2>
+@using (Html.BeginForm("IslemEkle", "Calculation", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <table>
+        <tr>
+            <td>
+                @Html.DropDownList("UyeId", new SelectList(ViewBag.uyeler, "id", "Ad"), new { @class = "form-control", onchange = "AdSec()" })
+            </td>
+
+
+            <td>
+                @Html.TextBoxFor(m => m.Tutar, new { @class = "form-control", placeholder = "Tutar" })
+
+            </td>
+
+            
+            <td>
+                @Html.TextBoxFor(m => m.Aciklama, new { @class = "form-control", placeholder = "Açıklama" })
+            </td>
+            <td>
+                <button type="submit" class="btn btn-success">Ekle</button>
+
+                <hr />
+                <p>@ViewBag.uyari</p>
+            </td>
+        </tr>
+    </table>
+}

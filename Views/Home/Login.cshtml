@@ -1,0 +1,42 @@
+﻿@model ApartmanProjeMVC.Models.AspNetUsers
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+
+    <title>Login</title>
+</head>
+<body>
+
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
+    {
+
+        
+            <input id="UserName" type="text" />
+            <input id="Password" type="password" />
+            <div class="form-group">
+                <input id="Login" type="button" value="Login" />
+                <div id="response"></div>
+            </div>
+            
+
+            <p style="color:red">@ViewBag.uyari</p>
+        
+    }
+    
+
+    
+
+
+    
+
+</body>
+</html>
+

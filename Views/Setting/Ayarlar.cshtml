@@ -1,0 +1,40 @@
+﻿@model List<ApartmanProjeMVC.Models.Setting>
+@{
+    ViewBag.Title = "Ayarlar";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>Ayarlar</h2>
+
+<table>
+    <thead>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                Aidat Tutarı
+            </td>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var aidat in Model)
+        {
+            <tr id="tab_@aidat.ID">
+                <td>
+                    <input id="@aidat.ID" type="text" value="@aidat.ID" class="form-control" readonly />
+                </td>
+                <td>
+                    <input id="aidatTutari_@aidat.ID" type="text" value="@aidat.aidatTutari" class="form-control" />
+                </td>
+
+                <td>
+                    <button type="button" class="btn btn-warning" onclick="Degistir(@aidat.ID)">Değiştir</button>
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>

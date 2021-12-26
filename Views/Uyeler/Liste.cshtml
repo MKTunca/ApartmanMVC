@@ -1,0 +1,72 @@
+﻿@model List<ApartmanProjeMVC.Models.Uyeler>
+@{
+    ViewBag.Title = "Liste";
+    Layout = "~/Views/Shared/Yonetim.cshtml";
+}
+
+<h2>Liste</h2>
+
+<table>
+    <thead>
+        <tr>
+            <td>
+                ID
+            </td>
+            <td>
+                Ad-Soyad
+            </td>
+            <td>
+                Daire Numarası
+            </td>
+            <td>
+                Oturan Kişi
+            </td>
+            <td>
+                Telefon Numarası
+            </td>
+
+            <td>
+                Tarih
+            </td>
+            <td>
+                Bakiye
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var uye in Model)
+        {
+            <tr id="tablo_@uye.ID">
+                <td>
+                    <input id="@uye.ID" type="text" value="@uye.ID" class="form-control" readonly />
+                </td>
+                <td>
+                    <input id="adsoyad_@uye.ID" type="text" value="@uye.Ad" class="form-control" />
+                </td>
+                <td>
+                    <input id="daire_@uye.ID" type="text" value="@uye.Daire" class="form-control" />
+                </td>
+                <td>
+                    @Html.DropDownList("oturan_" + uye.ID, new SelectList(ViewBag.oturan, "Value", "Text"), uye.Oturan, new { @class = "form-control" })
+                </td>
+                <td>
+                    <input id="gsm_@uye.ID" type="text" value="@uye.gsm" class="form-control" />
+                </td>
+
+                <td>
+                    <input id="tarih_@uye.ID" type="datetime" value="@uye.tarih" class="form-control" />
+                </td>
+                <td>
+                    <input type="text" value="@uye.Bakiye" class="form-control" readonly />
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning" onclick="UyeDegistir(@uye.ID)">Değiştir</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger" onclick="UyeSil(@uye.ID)">Sil</button>
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>
